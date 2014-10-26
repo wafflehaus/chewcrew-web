@@ -1,0 +1,20 @@
+<link rel="import" href="../packages/core_elements/core_icons.html">
+<link rel="import" href="../packages/paper_elements/paper_button.html">
+<link rel="import" href="../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../packages/paper_elements/paper_input.html">
+
+<polymer-element name="chewcrew-pref">
+<template>
+<link rel="stylesheet" href="pref.css">
+
+<div unresolved vertical layout fullbleed id="preferences">
+  <paper-input placeholder="Your Name" value={{name}}></paper-input>
+  <template repeat="{{category in categories}}">
+    <paper-checkbox label={{category}}></paper-checkbox>
+  </template>
+  <paper-button on-click="{{start}}">Start</paper-button>
+</div>
+
+</template>
+<script type="application/dart" src="pref.dart"></script>
+</polymer-element>

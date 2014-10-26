@@ -4,6 +4,7 @@ pub/
 build/
 .packages/
 packages/
+packages
 .buildlog
 
 # Or the files created by dart2js.
