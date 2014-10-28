@@ -1,6 +1,6 @@
-# Sandwhich-Client
+# ChewCrew Web App
 
-Frontend for Sandwhich
+Web Frontend for ChewCrew
 
 ## Getting Started
 
