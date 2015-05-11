@@ -9,7 +9,8 @@
         "url": "https://github.com/wafflehaus/chewcrew-web.git"
     },
     "scripts": {
-        "start": "node_modules/.bin/brunch watch --server"
+        "start": "node_modules/.bin/brunch watch --server",
+        "build": "node_modules/.bin/brunch build --production"
     },
     "dependencies": {
         "brunch": "latest",

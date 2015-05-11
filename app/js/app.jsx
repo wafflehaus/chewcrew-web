@@ -7,13 +7,12 @@ var qVoter = 'voter';
 /* ChewCrew */
 var ChewCrew = React.createClass({
   render: function() {
-    var currentScreen = <SessionScreen session={this.props.session} />;
     if (isEmptyStr(this.props.session.voterid)) {
-      // VoterID is empty, so the user must not be in a session
-      currentScreen = <StartScreen sessionid={this.props.session.id} />;
+      // VoterID is empty, so the user is not in a session
+      return <StartScreen sessionid={this.props.session.id} />;
+    } else {
+      return <SessionScreen session={this.props.session} />;
     }
-
-    return currentScreen;
   }
 });
 
@@ -91,7 +90,7 @@ var Voters = React.createClass({
     return <code>{voter.name} {flag}</code>;
   },
   render: function() {
-    return <Voters>{this.props.items.map(this.voter)}</Voters>;
+    return <div>{this.props.items.map(this.voter)}</div>;
   }
 });
 
@@ -99,8 +98,7 @@ var Voters = React.createClass({
 var Lobby = React.createClass({
   ready: function() {
     sessionReady(this.props.sessionid, this.props.voterid, function() {
-      // Update page on completion
-      refresh();
+      refresh(); // Update page on completion
     });
   },
   render: function() {
@@ -120,13 +118,15 @@ var Choices = React.createClass({
   },
   vote: function(choiceid) {
     sessionVote(this.props.sessionid, this.props.voterid, choiceid, function() {
-      // Update page on completion
-      refresh();
+      refresh(); // Update page on completion
     });
   },
   render: function() {
-    if (this.props.voted) return <h6>Waiting for others to vote</h6>;
-    return <Choices>{this.props.items.map(this.choice)}</Choices>;
+    if (this.props.voted) {
+      return <h6>Waiting for others to vote</h6>;
+    } else {
+      return <div>{this.props.items.map(this.choice)}</div>;
+    }
   }
 });
 
@@ -134,10 +134,10 @@ var Choices = React.createClass({
 var Winner = React.createClass({
   render: function() {
     return (
-      <Winner>
+      <div>
         <h6>And the winner is...</h6>
         <h4>{this.props.winner.name}</h4>
-      </Winner>
+      </div>
     );
   }
 });

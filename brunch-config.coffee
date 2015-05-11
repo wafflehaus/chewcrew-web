@@ -21,12 +21,4 @@ exports.config =
 		stylesheets:
 			joinTo:
 				'app.css': /app\/css\//
-
-	plugins:
-		uglify:
-      		mangle: false
-		react:
-	 		transformOptions:
-	 			harmony: yes # include some es6 transforms
-				sourceMap: no # generate inline source maps
-				stripTypes: no # strip type annotations
+				
