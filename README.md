@@ -13,7 +13,11 @@
 	```
 
 - Open http://localhost:3333/
-- Build for production: npm run-script install
+- Build for production: 
+
+	```bash
+	npm run-script install
+	```
 
 ## Flow
 
