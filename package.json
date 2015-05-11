@@ -1,0 +1,23 @@
+{
+    "name": "chewcrew-web",
+    "author": "wafflehaus",
+    "homepage": "http://chewcrew.cc",
+    "version": "0.0.2",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wafflehaus/chewcrew-web.git"
+    },
+    "scripts": {
+        "start": "node_modules/.bin/brunch watch --server",
+        "build": "node_modules/.bin/brunch build --production"
+    },
+    "dependencies": {
+        "brunch": "latest",
+        "javascript-brunch": "latest",
+        "uglify-js-brunch": "latest",
+        "css-brunch": "latest",
+        "clean-css-brunch": "latest",
+        "react-brunch": "latest"
+    }
+}
