@@ -13,11 +13,7 @@ var ChewCrew = React.createClass({
       currentScreen = <StartScreen sessionid={this.props.session.id} />;
     }
 
-    return (
-      <div className='container' style={{padding: '5%'}}>
-        <center>{currentScreen}</center>
-      </div>
-    );
+    return currentScreen;
   }
 });
 
@@ -95,7 +91,7 @@ var Voters = React.createClass({
     return <code>{voter.name} {flag}</code>;
   },
   render: function() {
-    return <voters>{this.props.items.map(this.voter)}</voters>;
+    return <Voters>{this.props.items.map(this.voter)}</Voters>;
   }
 });
 
@@ -130,7 +126,7 @@ var Choices = React.createClass({
   },
   render: function() {
     if (this.props.voted) return <h6>Waiting for others to vote</h6>;
-    return <choices>{this.props.items.map(this.choice)}</choices>;
+    return <Choices>{this.props.items.map(this.choice)}</Choices>;
   }
 });
 
@@ -138,10 +134,10 @@ var Choices = React.createClass({
 var Winner = React.createClass({
   render: function() {
     return (
-      <winner>
+      <Winner>
         <h6>And the winner is...</h6>
         <h4>{this.props.winner.name}</h4>
-      </winner>
+      </Winner>
     );
   }
 });
@@ -211,7 +207,7 @@ var getSession = function(callback) {
 
 var refresh = function() {
   getSession(function(result) {
-      React.render(<ChewCrew session={result} /> , document.getElementsByTagName('chewcrew')[0]);
+      React.render(<ChewCrew session={result} /> , document.getElementsByTagName('Chewcrew')[0]);
   });
 };
 
