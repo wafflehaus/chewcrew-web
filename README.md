@@ -4,12 +4,14 @@
 
 - Install nodejs/npm
 - Run the following:
+
 	```bash
 	git clone https://github.com/wafflehaus/chewcrew-web.git
 	cd chewcrew-web
 	npm install
 	npm start
 	```
+
 - Open http://localhost:3333/
 - Build for production: npm run-script install
 
