@@ -1,0 +1,12 @@
+{
+    "name": "chewcrew-web",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "riot": "latest",
+	"purecss": "latest"
+    }
+}

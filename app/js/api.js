@@ -1,44 +1,45 @@
-'use strict'
-
 // TODO: Find a way to change this based on environment (dev/prod)
 // When dev, should be localhost. When prod, should be chewcrew.cc
-var api = 'http://localhost:8080/sessions';
+var apiurl = 'http://localhost:8080/room';
 
-var sessionGet = function(sessionId, voterId, callback) {
-	var url = api + '/' + sessionId + '?' + 'voterid=' + voterId;
-	sessionExecute('GET', url, callback);
-};
+function api() {}
 
-var sessionCreate = function(hostname, callback) {
-	var url = api + '?' + 'name=' + hostname;
-	sessionExecute('POST', url, callback);
-};
+api.get = function(id, callback) {
+	var url = apiurl + '?id=' + apiId;
+	api.execute('GET', url, callback);
+}
 
-var sessionJoin = function(sessionId, voterName, callback) {
-	var url = api + '/' + sessionId + '/join' + '?' + 'name=' + voterName;
-	sessionExecute('POST', url, callback);
-};
+api.create = function(address, callback) {
+	var url = apiurl + '/new' + '?address=' + address;
+	api.execute('POST', url, callback);
+}
 
-var sessionReady = function(sessionId, voterId, callback) {
-	var url = api + '/' + sessionId + '/ready' + '?' + 'voterid=' + voterId;
-	sessionExecute('POST', url, callback);
-};
+api.vote = function(id, name, vote, callback) {
+	var url = apiurl + '/vote' + '?id=' + id + '&name=' + name + '&vote=' + vote;
+	api.execute('POST', url, callback);
+}
 
-var sessionVote = function(sessionId, voterId, choiceId, callback) {
-	var url = api + '/' + sessionId + '/vote' + '?' + 'voterid=' + voterId + '&' + 'choiceid=' + choiceId;
-	sessionExecute('POST', url, callback);
-};
+api.end = function(id, hostid, callback) {
+	var url = apiurl + '/end' + '?id=' + id + '&hostid=' + hostid;
+	api.execute('POST', url, callback);
+}
 
-var sessionExecute = function(type, url, callback) {
-	marmottajax({
-	        method: type,
-	        url: url,
-	        json: true,
-	    })
-	    .then(function(data) {
-	        callback(data);
-	    })
-	    .error(function(msg) {
-	    	callback({"error": msg});
-	    });
-};
+api.execute = function(method, url, callback) {
+	var req = new XMLHttpRequest();
+	req.open(method, url, true);
+
+	req.onload = function() {
+  		if (req.status >= 200 && req.status < 400) {
+			var data = JSON.parse(req.responseText);
+    			callback(data);
+  		} else {
+			var err = JSON.parse(req.responseText);
+			callback(err);
+  		}
+	};
+	
+	req.onerror = function() {
+		callback('{"error": "Network connection failure"}')
+	};
+	req.send();
+}

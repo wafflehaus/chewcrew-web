@@ -2,22 +2,25 @@
     "name": "chewcrew-web",
     "author": "wafflehaus",
     "homepage": "http://chewcrew.cc",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "private": true,
     "repository": {
         "type": "git",
         "url": "https://github.com/wafflehaus/chewcrew-web.git"
     },
     "scripts": {
+    	"install": "node_modules/.bin/bower update",
+    	"update": "node_modules/.bin/bower update",
         "start": "node_modules/.bin/brunch watch --server",
         "build": "node_modules/.bin/brunch build --production"
     },
     "dependencies": {
+    	"bower": "latest",
         "brunch": "latest",
-        "javascript-brunch": "latest",
+	"javascript-brunch": "latest",
         "uglify-js-brunch": "latest",
         "css-brunch": "latest",
         "clean-css-brunch": "latest",
-        "react-brunch": "latest"
+        "riot-brunch": "latest"
     }
 }
